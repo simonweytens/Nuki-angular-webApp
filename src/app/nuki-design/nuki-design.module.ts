@@ -18,12 +18,15 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HomeComponent } from './home/home.component';
+import { AppRoutingModule } from '../app-routing.module';
+import { UnlockComponent } from './unlock/unlock.component';
 
 @NgModule({
   declarations: [
     NukiToolbarComponent,
     NukiReservationComponent,
-    HomeComponent
+    HomeComponent,
+    UnlockComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +45,7 @@ import { HomeComponent } from './home/home.component';
     MatSliderModule,
     MatCheckboxModule,
     MatSlideToggleModule,
-    
+    AppRoutingModule
   ],
   exports: [
     NukiToolbarComponent,

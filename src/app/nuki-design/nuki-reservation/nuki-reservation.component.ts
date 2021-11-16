@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl} from '@angular/forms'
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
+import { User } from './models/user';
 
 @Component({
   selector: 'app-nuki-reservation',
@@ -8,11 +9,22 @@ import {FormBuilder, FormControl} from '@angular/forms'
 })
 export class NukiReservationComponent implements OnInit {
 
-  name: FormControl = this.fb.control("");
+  reservationFormGroup: FormGroup;
 
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) { 
+    this.reservationFormGroup = this.fb.group({
+      email: ["", [Validators.required, Validators.email]]
+    })
   }
 
+  ngOnInit(): void {
+    this.reservationFormGroup
+    .valueChanges
+    .subscribe(item => 
+      console.log(item as User))
+  }
+
+  get email(){
+    return this.reservationFormGroup.get("email")
+  }
 }
