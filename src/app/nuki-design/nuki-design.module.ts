@@ -20,6 +20,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { UnlockComponent } from './unlock/unlock.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ import { UnlockComponent } from './unlock/unlock.component';
     MatSliderModule,
     MatCheckboxModule,
     MatSlideToggleModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   exports: [
     NukiToolbarComponent,

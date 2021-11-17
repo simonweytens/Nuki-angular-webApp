@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
+import { fade } from '../animations';
 import { User } from './models/user';
 
 @Component({
   selector: 'app-nuki-reservation',
   templateUrl: './nuki-reservation.component.html',
-  styleUrls: ['./nuki-reservation.component.css']
+  styleUrls: ['./nuki-reservation.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class NukiReservationComponent implements OnInit {
 
