@@ -3,6 +3,13 @@ using EmailStoreApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddCors(options => 
+    //options.AddPolicy(name: "AllowAnyOrigin", builder => builder.AllowAnyOrigin())
+    options.AddDefaultPolicy(builder => builder.AllowAnyOrigin())
+    );
+
+
+
 // Add services to the container.
 builder.Services.Configure<EmailStoreDatabaseSettings>(
     builder.Configuration.GetSection("BookStoreDatabase"));
@@ -15,7 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
+app.UseCors();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
