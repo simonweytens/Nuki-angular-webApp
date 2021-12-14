@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms'
-import { fade } from '../animations';
-import { User } from './models/user';
+import { UserProfile } from 'src/app/app-http-calls/user-data.service';
+import { fade, staggerFade } from '../animations';
+
 
 @Component({
   selector: 'app-nuki-reservation',
   templateUrl: './nuki-reservation.component.html',
   styleUrls: ['./nuki-reservation.component.css'],
   animations: [
-    fade
+    fade,
+    staggerFade
   ]
 })
 export class NukiReservationComponent implements OnInit {
@@ -25,7 +27,7 @@ export class NukiReservationComponent implements OnInit {
     this.reservationFormGroup
     .valueChanges
     .subscribe(item => 
-      console.log(item as User))
+      console.log(item as UserProfile))
   }
 
   get email(){

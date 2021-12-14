@@ -21,6 +21,9 @@ import { HomeComponent } from './home/home.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { UnlockComponent } from './unlock/unlock.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { UserDataService } from '../app-http-calls/user-data.service';
+import {  MatGridListModule } from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -28,7 +31,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NukiToolbarComponent,
     NukiReservationComponent,
     HomeComponent,
-    UnlockComponent
+    UnlockComponent,
+    AdminPageComponent
+  ],
+  providers: [
+    UserDataService
   ],
   imports: [
     CommonModule,
@@ -48,12 +55,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCheckboxModule,
     MatSlideToggleModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule,
   ],
   exports: [
     NukiToolbarComponent,
     NukiReservationComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPageComponent
   ]
 })
 export class NukiDesignModule { }
