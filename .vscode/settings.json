@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/8f81b34c-4679-4abd-9388-8d0aa7bb1f89/resourceGroups/NukiPWA-rg/providers/Microsoft.Web/sites/lokaal116Slot",
+    "appService.deploySubpath": "."
+}

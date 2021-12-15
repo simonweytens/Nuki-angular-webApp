@@ -10,6 +10,8 @@ import { UserDataService}  from '../../app-http-calls/user-data.service'
 })
 export class AdminPageComponent implements OnInit {
 
+  displayedColumns = [  'firstName', 'lastName', 'emailAdress','rnummer']
+
   constructor(private userDataService: UserDataService) { }
 
   users!: Observable<Array<UserProfile>>;

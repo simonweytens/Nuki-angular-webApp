@@ -1,0 +1,19 @@
+<div class="container" @fade>
+    <form #reservationForm="ngForm" [formGroup]="addUserFormGroup">
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>E-mail</mat-label>
+                <input matInput type="text" name="email" formControlName="email"/>
+                <mat-icon *ngIf="email?.valid" matSuffix>check_circle</mat-icon>    
+            </mat-form-field>
+        </div>
+        <div *ngIf="email?.touched" class="error-message">
+            Invalid email. Use youre.name@student.vives.be
+        </div>
+        <div class="pull-right">
+            <button [disabled]="email?.invalid" [routerLink]="['/unlock']" mat-stroked-button color="accent">Save</button>
+            <button mat-stroked-button color="accent">Cancel</button>
+        </div>
+    </form>
+</div>
+

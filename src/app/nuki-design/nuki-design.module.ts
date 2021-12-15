@@ -24,6 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserDataService } from '../app-http-calls/user-data.service';
 import {  MatGridListModule } from '@angular/material/grid-list';
+import { MatTableModule } from '@angular/material/table';
+import { AddUserComponent } from './admin-page/add-user/add-user.component'
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import {  MatGridListModule } from '@angular/material/grid-list';
     NukiReservationComponent,
     HomeComponent,
     UnlockComponent,
-    AdminPageComponent
+    AdminPageComponent,
+    AddUserComponent
   ],
   providers: [
     UserDataService
@@ -57,6 +60,7 @@ import {  MatGridListModule } from '@angular/material/grid-list';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatGridListModule,
+    MatTableModule,
   ],
   exports: [
     NukiToolbarComponent,
