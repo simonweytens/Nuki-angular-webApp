@@ -38,10 +38,12 @@ export class AddUserComponent implements OnInit {
   }
 
   users!: Observable<Array<UserProfile>>;
-  
-  user!: UserProfile
+
+
   postData(): void{
-    this.userDataService.save(this.user).subscribe()
+    console.log(this.addUserFormGroup.value)
+    this.userDataService.save(this.addUserFormGroup.value)
+    .subscribe(item => item as UserProfile)
   }
 
 }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, empty } from 'rxjs';
+import { Observable } from 'rxjs';
 
 
 const url_prefix = "https://emailstoreapi20211214175742.azurewebsites.net/api/users"
@@ -15,11 +15,11 @@ export class UserDataService {
   getUsers() {
     return this.httpClient.get<Array<UserProfile>>(url_prefix)
   }
-  
-  save(user: UserProfile): Observable <UserProfile>{
+
+  save(user: FormData): Observable <UserProfile>{
     return this.httpClient.post<UserProfile>(url_prefix, user, {
       headers: new HttpHeaders({
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       })
     })   
   }
