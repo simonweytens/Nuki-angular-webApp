@@ -1,6 +1,5 @@
-<div class="container">
+<div class="container" @fade>
 <mat-table [dataSource]="users">
-
     <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef>Voornaam</mat-header-cell>
         <mat-cell id="firstName" *matCellDef="let user">{{user.firstName}}</mat-cell>

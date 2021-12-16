@@ -1,17 +1,35 @@
 <div class="container" @fade>
-    <form #reservationForm="ngForm" [formGroup]="addUserFormGroup">
+    <form #addUserForm="ngForm" [formGroup]="addUserFormGroup">
         <div>
             <mat-form-field appearance="outline">
                 <mat-label>E-mail</mat-label>
-                <input matInput type="text" name="email" formControlName="email"/>
-                <mat-icon *ngIf="email?.valid" matSuffix>check_circle</mat-icon>    
+                <input required matInput type="email" name="email" formControlName="emailAdress"/>
+                <mat-icon *ngIf="emailAdress?.invalid" matSuffix>check_circle</mat-icon>    
             </mat-form-field>
         </div>
-        <div *ngIf="email?.touched" class="error-message">
+        <div *ngIf="emailAdress?.touched" class="error-message">
             Invalid email. Use youre.name@student.vives.be
         </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Voornaam</mat-label>
+                <input  matInput required type="text" name="firstName" formControlName="firstName">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Achternaam</mat-label>
+                <input  matInput required type="text" name="lastName" formControlName="lastName">
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>r-Nummer</mat-label>
+                <input  matInput required type="text" name="rnummer" formControlName="rnummer">
+            </mat-form-field>
+        </div>
         <div class="pull-right">
-            <button [disabled]="email?.invalid" [routerLink]="['/unlock']" mat-stroked-button color="accent">Save</button>
+            <button [disabled]="addUserForm.invalid" mat-stroked-button color="accent" (click)="postData()">Save</button>
             <button mat-stroked-button color="accent">Cancel</button>
         </div>
     </form>
