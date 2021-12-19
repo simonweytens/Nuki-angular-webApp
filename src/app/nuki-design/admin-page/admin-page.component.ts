@@ -18,10 +18,15 @@ export class AdminPageComponent implements OnInit {
 
   constructor(private userDataService: UserDataService) { }
 
-  users!: Observable<Array<UserProfile>>;
+  users!: UserProfile[];
 
   ngOnInit(): void {
-    this.users = this.userDataService.getUsers();
+    this.getUsers()
+  }
+
+  getUsers(): void{
+    this.userDataService.getUsers()
+      .subscribe(users => this.users = users)
   }
 
 }

@@ -4,6 +4,7 @@ import { UserProfile } from 'src/app/app-http-calls/user-data.service';
 import { fade } from '../../animations';
 import { UserDataService}  from '../../../app-http-calls/user-data.service'
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-add-user',
@@ -17,7 +18,11 @@ export class AddUserComponent implements OnInit {
 
   addUserFormGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, private userDataService: UserDataService ) {
+  constructor(
+      private fb: FormBuilder, 
+      private userDataService: UserDataService,
+      private location: Location
+     ) {
     this.addUserFormGroup = this.fb.group({
       emailAdress: ["", [Validators.required, Validators.email]],
       firstName: ["", [Validators.required]],
@@ -27,10 +32,6 @@ export class AddUserComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.addUserFormGroup
-    .valueChanges
-    .subscribe(item => 
-      item as UserProfile)
   }
 
   get emailAdress(){
@@ -39,11 +40,13 @@ export class AddUserComponent implements OnInit {
 
   users!: Observable<Array<UserProfile>>;
 
+  goBack(): void {
+    this.location.back()
+  }
 
   postData(): void{
-    console.log(this.addUserFormGroup.value)
-    this.userDataService.save(this.addUserFormGroup.value)
-    .subscribe(item => item as UserProfile)
+    this.userDataService.addUser(this.addUserFormGroup.value)
+    .subscribe(() => this.goBack())
   }
 
 }

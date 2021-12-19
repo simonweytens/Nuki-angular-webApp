@@ -1,23 +1,31 @@
 <div class="container" @fade>
 <mat-table [dataSource]="users">
-    <ng-container matColumnDef="firstName">
+    <ng-container  matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef>Voornaam</mat-header-cell>
-        <mat-cell id="firstName" *matCellDef="let user">{{user.firstName}}</mat-cell>
+            <mat-cell id="firstName"  *matCellDef="let user" routerLink="user-detail/{{user.id}}">
+                {{user.firstName}}
+            </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="lastName">
         <mat-header-cell *matHeaderCellDef>Achternaam</mat-header-cell>
-        <mat-cell id="lastName" *matCellDef="let user">{{user.lastName}}</mat-cell>
+        <mat-cell id="lastName" *matCellDef="let user" routerLink="user-detail/{{user.id}}">
+            {{user.lastName}}
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="emailAdress">
         <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell id="emailAdress" *matCellDef="let user">{{user.emailAdress}}</mat-cell>
+        <mat-cell id="emailAdress" *matCellDef="let user" routerLink="user-detail/{{user.id}}">
+            {{user.emailAdress}}
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="rnummer">
         <mat-header-cell *matHeaderCellDef>r-Nummer</mat-header-cell>
-        <mat-cell id="rnummer" *matCellDef="let user">{{user.rnummer}}</mat-cell>
+        <mat-cell id="rnummer" *matCellDef="let user" routerLink="user-detail/{{user.id}}">
+            {{user.rnummer}}
+        </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -27,5 +35,5 @@
 <a routerLink="add-user">
     add-user
 </a>
-</div>
 <router-outlet></router-outlet>
+</div>

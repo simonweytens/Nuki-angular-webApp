@@ -25,8 +25,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { UserDataService } from '../app-http-calls/user-data.service';
 import {  MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
-import { AddUserComponent } from './admin-page/add-user/add-user.component'
-
+import { AddUserComponent } from './admin-page/add-user/add-user.component';
+import { UserDetailComponent } from './admin-page/user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,8 @@ import { AddUserComponent } from './admin-page/add-user/add-user.component'
     HomeComponent,
     UnlockComponent,
     AdminPageComponent,
-    AddUserComponent
+    AddUserComponent,
+    UserDetailComponent,
   ],
   providers: [
     UserDataService
