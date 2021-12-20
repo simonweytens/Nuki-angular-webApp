@@ -1,7 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { UserProfile } from 'src/app/app-http-calls/user-data.service';
-import { UserDataService}  from '../../app-http-calls/user-data.service'
 import { fade } from '../animations';
 
 @Component({
@@ -14,19 +11,14 @@ import { fade } from '../animations';
 })
 export class AdminPageComponent implements OnInit {
 
-  displayedColumns = [  'firstName', 'lastName', 'emailAdress','rnummer']
 
-  constructor(private userDataService: UserDataService) { }
+  constructor() { }
 
-  users!: UserProfile[];
 
   ngOnInit(): void {
-    this.getUsers()
+
   }
 
-  getUsers(): void{
-    this.userDataService.getUsers()
-      .subscribe(users => this.users = users)
-  }
+
 
 }

@@ -1,29 +1,31 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { catchError, map, tap} from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 
 
-const url_prefix = "https://emailstoreapi20211214175742.azurewebsites.net/api/users"
-const test_url = "https://postman-echo.com/post"
+
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class UserDataService {
+
+  private url_prefix = "https://emailstoreapi20211214175742.azurewebsites.net"
 
   constructor(private httpClient: HttpClient) { }
 
   //Alle users ophalen
   getUsers(){
-    return this.httpClient.get<Array<UserProfile>>(url_prefix)
+    return this.httpClient.get<Array<UserProfile>>(`${this.url_prefix}/api/users`)
     .pipe(
-      tap(_ => console.log('fetched users'))
+      tap(_ => console.log(this.url_prefix))
     )
   }
 
   addUser(user: FormData){
-    return this.httpClient.post<Array<UserProfile>>(url_prefix, user, {
+    return this.httpClient.post<Array<UserProfile>>(`${this.url_prefix}/api/users`, user, {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       })
@@ -32,7 +34,7 @@ export class UserDataService {
 
   //1 user ophalen
   getUser(id: string): Observable<UserProfile> {
-    const url = `${url_prefix}/${id}`
+    const url = `${this.url_prefix}/api/users/${id}`
     return this.httpClient.get<UserProfile>(url)
     .pipe(
       tap(_ => console.log(`fetched user id=${id}`))

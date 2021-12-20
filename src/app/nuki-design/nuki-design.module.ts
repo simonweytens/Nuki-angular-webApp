@@ -27,6 +27,7 @@ import {  MatGridListModule } from '@angular/material/grid-list';
 import { MatTableModule } from '@angular/material/table';
 import { AddUserComponent } from './admin-page/add-user/add-user.component';
 import { UserDetailComponent } from './admin-page/user-detail/user-detail.component';
+import { ListViewComponent } from './admin-page/list-view/list-view.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { UserDetailComponent } from './admin-page/user-detail/user-detail.compon
     AdminPageComponent,
     AddUserComponent,
     UserDetailComponent,
+    ListViewComponent,
   ],
   providers: [
     UserDataService

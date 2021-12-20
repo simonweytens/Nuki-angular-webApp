@@ -1,0 +1,38 @@
+<div class="container" @fade>
+    <mat-table [dataSource]="users">
+        <ng-container  matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef>Voornaam</mat-header-cell>
+                <mat-cell id="firstName"  *matCellDef="let user" routerLink="details/{{user.id}}">
+                    {{user.firstName}}
+                </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef>Achternaam</mat-header-cell>
+            <mat-cell id="lastName" *matCellDef="let user" routerLink="details/{{user.id}}">
+                {{user.lastName}}
+            </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="emailAdress">
+            <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+            <mat-cell id="emailAdress" *matCellDef="let user" routerLink="details/{{user.id}}">
+                {{user.emailAdress}}
+            </mat-cell>
+        </ng-container>
+    
+        <ng-container matColumnDef="rnummer">
+            <mat-header-cell *matHeaderCellDef>r-Nummer</mat-header-cell>
+            <mat-cell id="rnummer" *matCellDef="let user" routerLink="details/{{user.id}}">
+                {{user.rnummer}}
+            </mat-cell>
+        </ng-container>
+    
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+    <div class="text-center">
+        <button mat-fab (click)="goBack()">Go Back</button>
+    </div>
+</div>
+    

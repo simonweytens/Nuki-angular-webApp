@@ -1,4 +1,4 @@
-
+<div class="container" class="text-center" @fade>
     <form #addUserForm="ngForm" (ngSubmit)="postData()" [formGroup]="addUserFormGroup">
         <div>
             <mat-form-field appearance="outline">
@@ -33,5 +33,9 @@
             <button mat-stroked-button color="accent">Cancel</button>
         </div>
     </form>
+    <div class="m-3">
+        <button mat-fab (click)="goBack()">Go Back</button>
+    </div>
+</div>
 
 

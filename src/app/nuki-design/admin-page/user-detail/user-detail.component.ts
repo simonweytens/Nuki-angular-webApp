@@ -1,30 +1,27 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute,  Router, NavigationStart, Event as NavigationEvent } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { UserDataService, UserProfile } from 'src/app/app-http-calls/user-data.service';
+import {Location} from '@angular/common'
+import { fade } from '../../animations';
+import { animation } from '@angular/animations';
 
 @Component({
   selector: 'app-user-detail',
   templateUrl: './user-detail.component.html',
-  styleUrls: ['./user-detail.component.css']
+  styleUrls: ['./user-detail.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class UserDetailComponent implements OnInit {
 
   constructor(
     private currentRoute: ActivatedRoute,
-    private router: Router,
     private userService: UserDataService,
-    //private location: Location
-  ) {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationStart)
-    ).subscribe(
-      (event: NavigationEvent) => {
-        this.getUser()
-        console.log(event)
-      }
-    )
-   }
+    private location: Location
+  ) 
+  {}
 
   ngOnInit(): void {
     this.getUser()
@@ -32,7 +29,9 @@ export class UserDetailComponent implements OnInit {
 
   @Input() user?: UserProfile
 
-  //TODO GO BACK
+  goBack(): void {
+    this.location.back()
+  }
 
   getUser(): void{
     const id = String(this.currentRoute.snapshot.paramMap.get('id'))
