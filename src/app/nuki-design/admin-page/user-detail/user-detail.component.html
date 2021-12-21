@@ -4,8 +4,13 @@
         <h2>{{user.lastName}}</h2>
         <p>{{user.emailAdress}}<p>
         <p>{{user.rnummer}}</p>
-    </div>
-    <div class="mt-3">
-        <button (click)="goBack()" mat-fab>Go Back</button>
+        <div>
+        <span class="m-3">
+            <button (click)="goBack()" mat-fab>Go Back</button>
+        </span>
+        <span class="m-3">
+            <button (click)="delete(user)" mat-fab><mat-icon>delete</mat-icon></button>
+        </span>
+        </div>
     </div>
 </div> 

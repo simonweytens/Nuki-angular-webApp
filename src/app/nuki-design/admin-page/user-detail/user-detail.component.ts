@@ -38,4 +38,12 @@ export class UserDetailComponent implements OnInit {
     this.userService.getUser(id)
     .subscribe(user => this.user = user)
   }
+
+  users: UserProfile[] = []
+
+  async delete(user: UserProfile): Promise<void> {
+    this.users = this.users.filter(h => h !== user)
+    this.userService.deleteUser(user.id).subscribe()
+  }
+
 }

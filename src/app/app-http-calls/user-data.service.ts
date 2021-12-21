@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,6 +13,10 @@ export class UserDataService {
 
   constructor(private httpClient: HttpClient) { }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-type': 'application/json'})
+  }
+
   //Alle users ophalen
   getUsers(){
     return this.httpClient.get<Array<UserProfile>>(`${this.url_prefix}/api/users`)
@@ -25,11 +26,10 @@ export class UserDataService {
   }
 
   addUser(user: FormData){
-    return this.httpClient.post<Array<UserProfile>>(`${this.url_prefix}/api/users`, user, {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-      })
-    })   
+    return this.httpClient.post<Array<UserProfile>>(`${this.url_prefix}/api/users`, 
+      user, 
+      this.httpOptions
+      )
   }
 
   //1 user ophalen
@@ -38,6 +38,13 @@ export class UserDataService {
     return this.httpClient.get<UserProfile>(url)
     .pipe(
       tap(_ => console.log(`fetched user id=${id}`))
+    )
+  }
+
+  deleteUser(id: string): Observable<UserProfile>{
+    const url = `${this.url_prefix}/api/users/${id}`
+    return this.httpClient.delete<UserProfile>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted user id=${id}`))
     )
   }
 
